@@ -20,14 +20,14 @@ pipeline {
             emailext (
                 subject: "Build Successful",
                 body: "The Jenkins build succeeded.",
-                to: "your_email@gmail.com"
+                to: "rohithsandiri@gmail.com"
             )
         }
         failure {
             emailext (
                 subject: "Build Failed",
                 body: "The Jenkins build failed.",
-                to: "your_email@gmail.com"
+                to: "rohithsandiri@gmail.com"
             )
         }
     }
