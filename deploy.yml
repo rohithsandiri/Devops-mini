@@ -1,13 +1,13 @@
 - hosts: localhost
-  connection: local
+  become: false
 
   tasks:
 
     - name: Stop old container
-      shell: docker rm -f javacalculator || true
+      shell: /usr/local/bin/docker rm -f javacalculator || true
 
     - name: Pull latest image from DockerHub
-      shell: docker pull rohithsandiri/javacalculator:latest
+      shell: /usr/local/bin/docker pull rohithsandiri/javacalculator:latest
 
     - name: Run container
-      shell: docker run -d --name javacalculator rohithsandiri/javacalculator:latest
+      shell: /usr/local/bin/docker run -d --name javacalculator rohithsandiri/javacalculator:latest
