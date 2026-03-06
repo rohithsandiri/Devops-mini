@@ -18,18 +18,25 @@ pipeline {
                 sh '''
                 export PATH=$PATH:/usr/local/bin:/Applications/Docker.app/Contents/Resources/bin
                 export DOCKER_CONFIG=$HOME/.docker
-                /usr/local/bin/docker build -t javacalculator .
+                /usr/local/bin/docker build -t rohithsandiri/javacalculator:latest .
                 '''
             }
         }
 
+
+
+        stage('Push Docker Image') {
+            steps {
+                sh 'docker push rohithsandiri/javacalculator:latest'
+            }
+        }
     }
 
     post {
         success {
             emailext(
                 subject: "Build Successful",
-                body: "Jenkins build succeeded and Docker image was created successfully.",
+                body: "Docker image built and pushed successfully.",
                 to: "rohithsandiri064@gmail.com",
                 from: "rohithsandiri064@gmail.com"
             )
@@ -38,7 +45,7 @@ pipeline {
         failure {
             emailext(
                 subject: "Build Failed",
-                body: "Jenkins build failed. Please check the Jenkins console output.",
+                body: "Pipeline failed. Check Jenkins logs.",
                 to: "rohithsandiri064@gmail.com",
                 from: "rohithsandiri064@gmail.com"
             )
