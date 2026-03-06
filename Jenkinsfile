@@ -15,7 +15,10 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh '/usr/local/bin/docker build -t javacalculator .'
+                sh '''
+                export DOCKER_CONFIG=$HOME/.docker
+                /usr/local/bin/docker build -t javacalculator .
+                '''
             }
         }
 
