@@ -4,10 +4,16 @@
   tasks:
 
     - name: Stop old container
-      shell: /usr/local/bin/docker rm -f javacalculator || true
+      shell: |
+        export PATH=$PATH:/usr/local/bin:/Applications/Docker.app/Contents/Resources/bin
+        docker rm -f javacalculator || true
 
     - name: Pull latest image from DockerHub
-      shell: /usr/local/bin/docker pull rohithsandiri/javacalculator:latest
+      shell: |
+        export PATH=$PATH:/usr/local/bin:/Applications/Docker.app/Contents/Resources/bin
+        docker pull rohithsandiri/javacalculator:latest
 
     - name: Run container
-      shell: /usr/local/bin/docker run -d --name javacalculator rohithsandiri/javacalculator:latest
+      shell: |
+        export PATH=$PATH:/usr/local/bin:/Applications/Docker.app/Contents/Resources/bin
+        docker run -d --name javacalculator rohithsandiri/javacalculator:latest
