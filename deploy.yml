@@ -16,4 +16,8 @@
     - name: Run container
       shell: |
         export PATH=$PATH:/usr/local/bin:/Applications/Docker.app/Contents/Resources/bin
-        docker run -d --name javacalculator rohithsandiri/javacalculator:latest
+        docker run -d \
+        -p 8080:8080 \
+        --name javacalculator \
+        --restart always \
+        rohithsandiri/javacalculator:latest
