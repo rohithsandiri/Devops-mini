@@ -1,0 +1,13 @@
+- hosts: localhost
+  connection: local
+
+  tasks:
+
+    - name: Stop old container
+      shell: docker rm -f javacalculator || true
+
+    - name: Pull latest image from DockerHub
+      shell: docker pull rohithsandiri/javacalculator:latest
+
+    - name: Run container
+      shell: docker run -d --name javacalculator rohithsandiri/javacalculator:latest

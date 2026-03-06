@@ -32,6 +32,11 @@ pipeline {
                 '''
             }
         }
+        stage('Deploy Application') {
+            steps {
+                sh 'ansible-playbook deploy.yml'
+            }
+        }
     }
 
     post {
