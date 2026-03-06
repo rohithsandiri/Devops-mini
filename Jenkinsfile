@@ -15,7 +15,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t javacalculator .'
+                sh '/usr/local/bin/docker build -t javacalculator .'
             }
         }
 
