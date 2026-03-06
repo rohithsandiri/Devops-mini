@@ -7,9 +7,15 @@ pipeline {
 
     stages {
 
-        stage('Build') {
+        stage('Build Jar') {
             steps {
                 sh 'mvn clean package'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t javacalculator .'
             }
         }
 
@@ -17,17 +23,18 @@ pipeline {
 
     post {
         success {
-            emailext (
+            emailext(
                 subject: "Build Successful",
-                body: "The Jenkins build succeeded.",
+                body: "Jenkins build succeeded and Docker image was created successfully.",
                 to: "rohithsandiri064@gmail.com",
                 from: "rohithsandiri064@gmail.com"
             )
         }
+
         failure {
-            emailext (
+            emailext(
                 subject: "Build Failed",
-                body: "The Jenkins build failed.",
+                body: "Jenkins build failed. Please check the Jenkins console output.",
                 to: "rohithsandiri064@gmail.com",
                 from: "rohithsandiri064@gmail.com"
             )
