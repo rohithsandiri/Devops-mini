@@ -34,7 +34,10 @@ pipeline {
         }
         stage('Deploy Application') {
             steps {
-                sh 'ansible-playbook deploy.yml'
+                sh '''
+                export PATH=$PATH:/opt/homebrew/bin
+                ansible-playbook deploy.yml
+                '''
             }
         }
     }
