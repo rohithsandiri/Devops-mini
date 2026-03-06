@@ -23,11 +23,13 @@ pipeline {
             }
         }
 
-
-
         stage('Push Docker Image') {
             steps {
-                sh 'docker push rohithsandiri/javacalculator:latest'
+                sh '''
+                export PATH=$PATH:/usr/local/bin:/Applications/Docker.app/Contents/Resources/bin
+                export DOCKER_CONFIG=$HOME/.docker
+                docker push rohithsandiri/javacalculator:latest
+                '''
             }
         }
     }
