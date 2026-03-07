@@ -43,7 +43,7 @@ pipeline {
             steps {
                 sh '''
                 export PATH=$PATH:/opt/homebrew/bin
-                ansible-playbook deploy.yml
+                ansible-playbook -i inventory.ini deploy.yml
                 '''
             }
         }
