@@ -7,6 +7,12 @@ pipeline {
 
     stages {
 
+        stage('Run Tests') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+
         stage('Build Jar') {
             steps {
                 sh 'mvn clean package'
@@ -18,7 +24,7 @@ pipeline {
                 sh '''
                 export PATH=$PATH:/usr/local/bin:/Applications/Docker.app/Contents/Resources/bin
                 export DOCKER_CONFIG=$HOME/.docker
-                /usr/local/bin/docker build -t rohithsandiri/javacalculator:latest .
+                docker build -t rohithsandiri/javacalculator:latest .
                 '''
             }
         }
@@ -32,6 +38,7 @@ pipeline {
                 '''
             }
         }
+
         stage('Deploy Application') {
             steps {
                 sh '''
@@ -46,7 +53,7 @@ pipeline {
         success {
             emailext(
                 subject: "Build Successful",
-                body: "Docker image built and pushed successfully.",
+                body: "Tests passed. Docker image built, pushed and deployed successfully.",
                 to: "rohithsandiri064@gmail.com",
                 from: "rohithsandiri064@gmail.com"
             )
