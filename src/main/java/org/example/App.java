@@ -130,7 +130,6 @@ public class App {
                 scanner.nextLine();
             }
         }
-// this comment is adding to test the pipeline
         scanner.close();
     }
 }
