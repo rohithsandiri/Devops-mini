@@ -26,6 +26,14 @@ public class App {
 
             int choice;
 
+            while (!scanner.hasNext()) {
+                try {
+                    Thread.sleep(10000);   // wait for input
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
             try {
                 choice = scanner.nextInt();
             } catch (Exception e) {
@@ -33,7 +41,6 @@ public class App {
                 scanner.nextLine();
                 continue;
             }
-
             if (choice == 0) {
                 System.out.println("Exiting calculator...");
                 break;
