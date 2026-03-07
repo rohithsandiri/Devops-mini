@@ -24,13 +24,20 @@ public class App {
 
             System.out.print("Select operation: ");
 
-            if (!scanner.hasNextInt()) {
-                System.out.println("No input detected. Waiting...");
+            // Wait if no input is available (container started without terminal)
+            if (!scanner.hasNext()) {
                 try {
-                    Thread.sleep(5000);
+                    Thread.sleep(2000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+                continue;
+            }
+
+            // Handle non-integer input
+            if (!scanner.hasNextInt()) {
+                System.out.println("Invalid input. Please enter a number.");
+                scanner.next();
                 continue;
             }
 
@@ -41,81 +48,88 @@ public class App {
                 break;
             }
 
-            switch (choice) {
+            try {
 
-                case 1:
-                    System.out.print("Enter first number: ");
-                    int a1 = scanner.nextInt();
+                switch (choice) {
 
-                    System.out.print("Enter second number: ");
-                    int b1 = scanner.nextInt();
+                    case 1:
+                        System.out.print("Enter first number: ");
+                        int a1 = scanner.nextInt();
 
-                    System.out.println("Result: " + calculator.add(a1, b1));
-                    break;
+                        System.out.print("Enter second number: ");
+                        int b1 = scanner.nextInt();
 
-                case 2:
-                    System.out.print("Enter first number: ");
-                    int a2 = scanner.nextInt();
+                        System.out.println("Result: " + calculator.add(a1, b1));
+                        break;
 
-                    System.out.print("Enter second number: ");
-                    int b2 = scanner.nextInt();
+                    case 2:
+                        System.out.print("Enter first number: ");
+                        int a2 = scanner.nextInt();
 
-                    System.out.println("Result: " + calculator.subtract(a2, b2));
-                    break;
+                        System.out.print("Enter second number: ");
+                        int b2 = scanner.nextInt();
 
-                case 3:
-                    System.out.print("Enter first number: ");
-                    int a3 = scanner.nextInt();
+                        System.out.println("Result: " + calculator.subtract(a2, b2));
+                        break;
 
-                    System.out.print("Enter second number: ");
-                    int b3 = scanner.nextInt();
+                    case 3:
+                        System.out.print("Enter first number: ");
+                        int a3 = scanner.nextInt();
 
-                    System.out.println("Result: " + calculator.multiply(a3, b3));
-                    break;
+                        System.out.print("Enter second number: ");
+                        int b3 = scanner.nextInt();
 
-                case 4:
-                    System.out.print("Enter first number: ");
-                    int a4 = scanner.nextInt();
+                        System.out.println("Result: " + calculator.multiply(a3, b3));
+                        break;
 
-                    System.out.print("Enter second number: ");
-                    int b4 = scanner.nextInt();
+                    case 4:
+                        System.out.print("Enter first number: ");
+                        int a4 = scanner.nextInt();
 
-                    System.out.println("Result: " + calculator.divide(a4, b4));
-                    break;
+                        System.out.print("Enter second number: ");
+                        int b4 = scanner.nextInt();
 
-                case 5:
-                    System.out.print("Enter number: ");
-                    double x = scanner.nextDouble();
+                        System.out.println("Result: " + calculator.divide(a4, b4));
+                        break;
 
-                    System.out.println("Result: " + calculator.squareRoot(x));
-                    break;
+                    case 5:
+                        System.out.print("Enter number: ");
+                        double x = scanner.nextDouble();
 
-                case 6:
-                    System.out.print("Enter number: ");
-                    int n = scanner.nextInt();
+                        System.out.println("Result: " + calculator.squareRoot(x));
+                        break;
 
-                    System.out.println("Result: " + calculator.factorial(n));
-                    break;
+                    case 6:
+                        System.out.print("Enter number: ");
+                        int n = scanner.nextInt();
 
-                case 7:
-                    System.out.print("Enter number: ");
-                    double ln = scanner.nextDouble();
+                        System.out.println("Result: " + calculator.factorial(n));
+                        break;
 
-                    System.out.println("Result: " + calculator.naturalLog(ln));
-                    break;
+                    case 7:
+                        System.out.print("Enter number: ");
+                        double ln = scanner.nextDouble();
 
-                case 8:
-                    System.out.print("Enter base: ");
-                    double base = scanner.nextDouble();
+                        System.out.println("Result: " + calculator.naturalLog(ln));
+                        break;
 
-                    System.out.print("Enter exponent: ");
-                    double exp = scanner.nextDouble();
+                    case 8:
+                        System.out.print("Enter base: ");
+                        double base = scanner.nextDouble();
 
-                    System.out.println("Result: " + calculator.power(base, exp));
-                    break;
+                        System.out.print("Enter exponent: ");
+                        double exp = scanner.nextDouble();
 
-                default:
-                    System.out.println("Invalid choice");
+                        System.out.println("Result: " + calculator.power(base, exp));
+                        break;
+
+                    default:
+                        System.out.println("Invalid choice");
+                }
+
+            } catch (Exception e) {
+                System.out.println("Invalid numeric input. Please try again.");
+                scanner.nextLine();
             }
         }
 
