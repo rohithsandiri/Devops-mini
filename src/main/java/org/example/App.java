@@ -1,38 +1,49 @@
 package org.example;
+
 import java.util.Scanner;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
+public class App {
+
+    public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
         Calculator calculator = new Calculator();
-        System.out.println("Select operation:");
-        System.out.println("1. Add");
 
+        while (true) {
 
-        int choice = scanner.nextInt();
-        System.out.println("Enter first number:");
-        int a = scanner.nextInt();
+            System.out.println("Select operation:");
+            System.out.println("1. Add");
+            System.out.println("0. Exit");
 
-        System.out.println("Enter second number:");
-        int b = scanner.nextInt();
+            int choice = scanner.nextInt();
 
-        int result = 0;
-        switch (choice){
-            case 1:
-                result = calculator.add(a,b);
+            if (choice == 0) {
+                System.out.println("Exiting calculator...");
                 break;
-            default:
-                System.out.println("Invalid operation");
-                scanner.close();
-                return;
+            }
+
+            System.out.println("Enter first number:");
+            int a = scanner.nextInt();
+
+            System.out.println("Enter second number:");
+            int b = scanner.nextInt();
+
+            int result = 0;
+
+            switch (choice) {
+
+                case 1:
+                    result = calculator.add(a, b);
+                    break;
+
+                default:
+                    System.out.println("Invalid operation");
+                    continue;
+            }
+
+            System.out.println("Result: " + result);
         }
-        System.out.println("Result: " + result);
+
         scanner.close();
     }
 }
