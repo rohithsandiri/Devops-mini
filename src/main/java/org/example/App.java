@@ -24,24 +24,15 @@ public class App {
 
             System.out.print("Select operation: ");
 
-            // Wait if no input is available (container started without terminal)
-            if (!scanner.hasNext()) {
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                continue;
-            }
+            int choice;
 
-            // Handle non-integer input
-            if (!scanner.hasNextInt()) {
+            try {
+                choice = scanner.nextInt();
+            } catch (Exception e) {
                 System.out.println("Invalid input. Please enter a number.");
-                scanner.next();
+                scanner.nextLine();
                 continue;
             }
-
-            int choice = scanner.nextInt();
 
             if (choice == 0) {
                 System.out.println("Exiting calculator...");
