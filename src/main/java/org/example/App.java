@@ -24,6 +24,16 @@ public class App {
 
             System.out.print("Select operation: ");
 
+            if (!scanner.hasNextInt()) {
+                System.out.println("No input detected. Waiting...");
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                continue;
+            }
+
             int choice = scanner.nextInt();
 
             if (choice == 0) {
