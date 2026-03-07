@@ -40,14 +40,6 @@ pipeline {
                 '''
             }
         }
-        stage('Run Calculator') {
-            steps {
-                sh """
-                docker run --rm rohithsandiri/javacalculator:latest \
-                ${OPERATION} ${A} ${B}
-                """
-            }
-        }
     }
 
     post {
