@@ -6,18 +6,18 @@ import static org.junit.Assert.*;
 public class CalculatorIntegrationTest {
 
     @Test
-    public void testMultipleOperations() {
+    public void testAdditionThenMultiplication() {
 
         Calculator calculator = new Calculator();
 
-        int addResult = calculator.add(5, 5);
-        int multiplyResult = calculator.multiply(addResult, 2);
+        int addResult = calculator.add(5, 5);     // 10
+        int multiplyResult = calculator.multiply(addResult, 2); // 20
 
         assertEquals(20, multiplyResult);
     }
 
     @Test
-    public void testPowerAndLogIntegration() {
+    public void testPowerThenLog() {
 
         Calculator calculator = new Calculator();
 
@@ -28,7 +28,7 @@ public class CalculatorIntegrationTest {
     }
 
     @Test
-    public void testFactorialAndDivision() {
+    public void testFactorialThenDivision() {
 
         Calculator calculator = new Calculator();
 
