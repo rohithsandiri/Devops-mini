@@ -19,5 +19,4 @@
         docker run -d \
         -p 8080:8080 \
         --name javacalculator \
-        --restart always \
         rohithsandiri/javacalculator:latest
