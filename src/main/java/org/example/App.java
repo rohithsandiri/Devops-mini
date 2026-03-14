@@ -44,7 +44,7 @@ public class App {
             if (choice == 0) {
                 System.out.println("Exiting calculator...");
                 break;
-            }
+
 
             try {
 
