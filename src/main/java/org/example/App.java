@@ -132,5 +132,4 @@ public class App {
         }
         scanner.close();
     }
-//this is just a comment for testing
 }
